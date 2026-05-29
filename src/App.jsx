@@ -135,7 +135,7 @@ function CustomTooltip({ active, payload, label }) {
 }
 
 function MemberForm({ initial, onSave, onCancel, loading }) {
-  const [f, setF] = useState(initial || { name:"", age:"", gender:"男", weight:"", note:"" });
+  const [f, setF] = useState(initial || { name:"", age:"", gender:"女", weight:"", note:"" });
   const inp = { width:"100%", background:"#0f172a", border:"1.5px solid #334155", borderRadius:12,
     padding:"11px 14px", color:"#f1f5f9", fontSize:15, outline:"none", boxSizing:"border-box" };
   const lbl = { fontSize:12, color:"#64748b", marginBottom:5, display:"block" };
@@ -146,21 +146,21 @@ function MemberForm({ initial, onSave, onCancel, loading }) {
       </div>
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
         <div><label style={lbl}>姓名</label>
-          <input value={f.name} onChange={e=>setF(v=>({...v,name:e.target.value}))} placeholder="例：爸爸" style={inp} /></div>
+          <input value={f.name} onChange={e=>setF(v=>({...v,name:e.target.value}))} placeholder="请输入姓名" style={inp} /></div>
         <div><label style={lbl}>年龄</label>
           <input type="number" value={f.age} onChange={e=>setF(v=>({...v,age:e.target.value}))} placeholder="例：65" style={inp} /></div>
       </div>
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginTop:10}}>
         <div><label style={lbl}>性别</label>
           <div style={{display:"flex",gap:8}}>
-            {["男","女"].map(g => (
+            {["女","男"].map(g => (
               <button key={g} onClick={()=>setF(v=>({...v,gender:g}))}
                 style={{flex:1,padding:"11px 0",borderRadius:12,
                   border:`1.5px solid ${f.gender===g?"#60a5fa":"#334155"}`,
                   background:f.gender===g?"#1e3a5f":"#0f172a",
                   color:f.gender===g?"#60a5fa":"#64748b",
                   fontWeight:700,fontSize:14,cursor:"pointer"}}>
-                {g==="男"?"👨 男":"👩 女"}
+                {g==="女"?"👩 女":"👨 男"}
               </button>
             ))}
           </div>
